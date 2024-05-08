@@ -2,16 +2,6 @@ SRC = Counter.v testbench.cc
 BLDDIR = obj_dir
 BIN = $(BLDDIR)/VCounter
 
-VC = verilator -j 0 -Wall
-VFLAGS = --binary
+VFLAGS = --cc --exe --build --trace
 
-all: $(BIN)
-
-run: $(BIN)
-	./$<
-
-$(BIN): $(SRC)
-	$(VC) $(VFLAGS) $^
-
-clean:
-	$(RM) -rv $(BLDDIR)
+include ../common.mk
